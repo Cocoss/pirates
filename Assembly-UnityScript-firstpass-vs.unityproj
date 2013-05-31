@@ -49,10 +49,14 @@
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Barres.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Carac.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js" />
+     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Combat.js" />
+     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Crosshair.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\FPSInputController.js" />
+     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\IA.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Inventory.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Loot.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\PlatformInputController.js" />
+     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\lois_physiques.js" />
      <Compile Include="Assets\Standard Assets\Particles\Legacy Particles\TimedObjectDestructor.js" />
      <None Include="Assets\readme.txt" />
      <None Include="Assets\Standard Assets\Shaders\DifBumpSpecTransp.shader" />
@@ -62,6 +66,7 @@
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Sources\Shaders\FX-Water.shader" />
+     <None Include="Assets\SkeletonData\animations.txt" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\WaterInclude.cginc" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\FX-Water4.shader" />
      <None Include="Assets\Shader\DiffSpecNormal.shader" />

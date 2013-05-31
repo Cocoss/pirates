@@ -3,26 +3,13 @@
 function Anime (index : int) {
 
 if(index == 1){
-networkView.RPC("Sync_anim", RPCMode.All, 1);
+animation.Play("Tir");
 }
 
 if(index == 2){
-networkView.RPC("Sync_anim", RPCMode.All, 2);
+animation.Play("Recharge");
 }
 
 }
 
 
-
-@RPC
-function Sync_anim(index : int){
-
-if(index == 1){
-animation.Play("tir");
-}
-
-if(index == 2){
-animation.Play("recharge");
-}
-
-}

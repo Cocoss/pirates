@@ -12,10 +12,13 @@ GUI.Label(Rect(Screen.width-100, Screen.height-50, 100, 25),  balles_chargeur + 
 
 function Update(){
 
-if(Input.GetButtonDown("Tirer") && peutTirer == true && balles_chargeur > 0){
+if(Input.GetButtonDown("Fire1") && peutTirer == true && balles_chargeur > 0){
+	audio.PlayOneShot(son_tir);
+	//SendMessageUpwards("Anime", 1); Ne fonctionne pas bien pour le moment faudra refaire des animations
 	Tire();
+	
 }
-if(Input.GetButtonDown("Tirer") && peutTirer == true && balles_chargeur == 0  && balles_restantes > 0){
+if(Input.GetButtonDown("Fire1") && peutTirer == true && balles_chargeur == 0  && balles_restantes > 0){
 	Recharge();
 }
 
@@ -25,21 +28,30 @@ if(Input.GetButtonDown("Tirer") && peutTirer == true && balles_chargeur == 0  &&
 function Tire(){
 peutTirer = false;
 
-SendMessageUpwards("Anime", 1);
 balles_chargeur --; 
 
 var touche : RaycastHit;
 
-if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), touche, 100)){
-	if(touche.collider){
+	if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), touche, 100))
+		{
+		
+		if(touche.collider)
+			{
+			
+	print("touché ! ");
 	var objet = Instantiate(etincelles, touche.point, Quaternion.identity);
 	objet.transform.rotation = Quaternion.FromToRotation(Vector3.up, touche.normal);
-	Network.Instantiate(etincelles, objet.transform.position, objet.transform.rotation, 0);
-	Destroy(objet.gameObject);
-	}
+
+	var cible;
+	
+				if (touche.collider.name == "Boat") 
+					{touche.collider.gameObject.SendMessage("Degats");}
+				else {	
+					if (touche.collider.tag == "ennemi") 
+					{touche.collider.gameObject.SendMessage("Degats");}
+	}}
 }
 
-networkView.RPC("Sync_son", RPCMode.All);
 
 yield WaitForSeconds(0.2);
 peutTirer = true;
@@ -53,7 +65,7 @@ function Recharge(){
 peutTirer = false;
 balles_restantes -= 6;
 balles_chargeur += 6;
-SendMessageUpwards("Anime", 2);
+//SendMessageUpwards("Anime", 2); Ne fonctionne pas bien pour le moment faudra refaire des animations
 
 yield WaitForSeconds(1.8);
 peutTirer = true;

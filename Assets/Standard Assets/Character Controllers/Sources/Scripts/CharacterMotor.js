@@ -21,9 +21,9 @@ var inputJump : boolean = false;
 
 class CharacterMotorMovement {
 	// The maximum horizontal speed when moving
-	var maxForwardSpeed : float = 10.0;
-	var maxSidewaysSpeed : float = 10.0;
-	var maxBackwardsSpeed : float = 10.0;
+	var maxForwardSpeed : float = 6.0;
+	var maxSidewaysSpeed : float = 6.0;
+	var maxBackwardsSpeed : float = 6.0;
 		
 	// Curve for multiplying speed based on slope (negative = downwards)
 	var slopeSpeedMultiplier : AnimationCurve = AnimationCurve(Keyframe(-90, 1), Keyframe(0, 1), Keyframe(90, 0));
@@ -33,7 +33,7 @@ class CharacterMotorMovement {
 	var maxAirAcceleration : float = 20.0;
 
 	// The gravity for the character
-	var gravity : float = 9.81;
+	var gravity : float = lois_physiques.gravite;
 	var maxFallSpeed : float = 20.0;
 	
 	// For the next variables, @System.NonSerialized tells Unity to not serialize the variable or show it in the inspector view.
@@ -224,7 +224,7 @@ private function UpdateFunction () {
 	var lastPosition : Vector3 = tr.position;
 	
 	// We always want the movement to be framerate independent.  Multiplying by Time.deltaTime does this.
-	var currentMovementOffset : Vector3 = velocity * Time.deltaTime;
+	var currentMovementOffset : Vector3 = velocity * lois_physiques.deltatemps;
 	
 	// Find out how much we need to push towards the ground to avoid loosing grouning
 	// when walking down a step or over a sharp change in slope.
@@ -253,7 +253,7 @@ private function UpdateFunction () {
 	// Calculate the velocity based on the current and previous position.  
 	// This means our velocity will only be the amount the character actually moved as a result of collisions.
 	var oldHVelocity : Vector3 = new Vector3(velocity.x, 0, velocity.z);
-	movement.velocity = (tr.position - lastPosition) / Time.deltaTime;
+	movement.velocity = (tr.position - lastPosition) / lois_physiques.deltatemps;
 	var newHVelocity : Vector3 = new Vector3(movement.velocity.x, 0, movement.velocity.z);
 	
 	// The CharacterController can be moved in unwanted directions when colliding with things.
@@ -328,7 +328,7 @@ function FixedUpdate () {
 				movingPlatform.platformVelocity = (
 					movingPlatform.activePlatform.localToWorldMatrix.MultiplyPoint3x4(movingPlatform.activeLocalPoint)
 					- movingPlatform.lastMatrix.MultiplyPoint3x4(movingPlatform.activeLocalPoint)
-				) / Time.deltaTime;
+				) / lois_physiques.deltatemps;
 			}
 			movingPlatform.lastMatrix = movingPlatform.activePlatform.localToWorldMatrix;
 			movingPlatform.newPlatform = false;
@@ -391,7 +391,7 @@ private function ApplyInputVelocityChange (velocity : Vector3) {
 		velocity.y = 0;
 	
 	// Enforce max velocity change
-	var maxVelocityChange : float = GetMaxAcceleration(grounded) * Time.deltaTime;
+	var maxVelocityChange : float = GetMaxAcceleration(grounded) * lois_physiques.deltatemps;
 	var velocityChangeVector : Vector3 = (desiredVelocity - velocity);
 	if (velocityChangeVector.sqrMagnitude > maxVelocityChange * maxVelocityChange) {
 		velocityChangeVector = velocityChangeVector.normalized * maxVelocityChange;
@@ -422,9 +422,9 @@ private function ApplyGravityAndJumping (velocity : Vector3) {
 		jumping.lastButtonDownTime = Time.time;
 	
 	if (grounded)
-		velocity.y = Mathf.Min(0, velocity.y) - movement.gravity * Time.deltaTime;
+		velocity.y = Mathf.Min(0, velocity.y) - movement.gravity * lois_physiques.deltatemps;
 	else {
-		velocity.y = movement.velocity.y - movement.gravity * Time.deltaTime;
+		velocity.y = movement.velocity.y - movement.gravity * lois_physiques.deltatemps;
 		
 		// When jumping up we don't apply gravity for some time when the user is holding the jump button.
 		// This gives more control over jump height by pressing the button longer.
@@ -433,7 +433,7 @@ private function ApplyGravityAndJumping (velocity : Vector3) {
 			// If we're still less than that duration after the jumping time, apply the force.
 			if (Time.time < jumping.lastStartTime + jumping.extraHeight / CalculateJumpVerticalSpeed(jumping.baseHeight)) {
 				// Negate the gravity we just applied, except we push in jumpDir rather than jump upwards.
-				velocity += jumping.jumpDir * movement.gravity * Time.deltaTime;
+				velocity += jumping.jumpDir * movement.gravity * lois_physiques.deltatemps;
 			}
 		}
 		
