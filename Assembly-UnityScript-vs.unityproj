@@ -44,18 +44,26 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Boat\WaterSpume.js" />
      <Compile Include="Assets\CustomizableSword_Free\Scripts\CharacterViewerRotate.js" />
      <Compile Include="Assets\Scriptsmaison\Life.js" />
      <Compile Include="Assets\Scriptsmaison\Pause.js" />
      <Compile Include="Assets\Scriptsmaison\Pause_Menu.js" />
      <Compile Include="Assets\Scriptsmaison\Play.js" />
+     <Compile Include="Assets\Scriptsmaison\VehicleController.js" />
+     <Compile Include="Assets\Weapons\Scripts\DamageReceiver.js" />
+     <Compile Include="Assets\Weapons\Scripts\MachineGun.js" />
+     <Compile Include="Assets\Weapons\Scripts\MouseAimTurret.js" />
      <None Include="Assets\readme.txt" />
      <None Include="Assets\Standard Assets\Shaders\DifBumpSpecTransp.shader" />
      <None Include="Assets\CustomizableSword_Free\readme.txt" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
+     <None Include="Assets\Pro Standard Assets\Water\Sources\FX-Water Reflected.shader" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\FX-SimpleWater4.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
+     <None Include="Assets\Ocean Sources\Ocean.shader" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
+     <None Include="Assets\SurfaceEffects\Spume\WaterSpume.shader" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Sources\Shaders\FX-Water.shader" />
      <None Include="Assets\SkeletonData\animations.txt" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\WaterInclude.cginc" />

@@ -1,13 +1,32 @@
 #pragma strict
 
+
 var Croix:Texture2D;
+var Hand:Texture2D;
+var barre:Texture2D;
+var reticule:Texture2D;
 
 
-function OnGUI () {
+
+function pointeur (index :int) {
+
+if (index == 0) {reticule = Croix;} else {
+if (index == 1) {reticule = barre;}}
 
 
 
- GUI.DrawTexture(Rect(Screen.width/2, Screen.height/2, 11, 11),Croix);
+
+
+}
+
+
+
+function OnGUI () { 
+
+
+
+ GUI.DrawTexture(Rect(Screen.width/2, Screen.height/2,50,50),reticule);
+ 
 
    
    }

@@ -1,16 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Character Controllers\Sources\Scripts\Conduite.js">
     <Files>
-      <File FileName="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Scripts\PlanarReflection.cs" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js" Line="26" Column="35" />
-      <File FileName="Assets\Standard Assets\Bras et armes\Tir_magnum.js" Line="56" Column="27" />
-      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\Loot.js" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\IA.js" Line="17" Column="11" />
-      <File FileName="Assets\Scriptsmaison\Life.js" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\FPSInputController.js" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\Combat.js" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Bras et armes\Anime_arme.js" Line="11" Column="2" />
+      <File FileName="Assets\Ocean Sources\Boyancy.cs" Line="56" Column="27" />
+      <File FileName="Assets\Editor\OceanGeneratorInspector.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\IA.js" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\Bateau.js" Line="2" Column="1" />
+      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\Interobjet.js" Line="40" Column="57" />
+      <File FileName="Assets\Standard Assets\Bras et armes\Tir_magnum.js" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\Conduite.js" Line="166" Column="48" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

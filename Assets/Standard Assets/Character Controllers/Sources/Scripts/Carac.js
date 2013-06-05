@@ -41,3 +41,8 @@ bonus_speed = recuploot.speed;
 carac_vitesse = vitesse + bonus_speed;
 
 }
+
+function XP (){
+
+experience = experience +10;
+}

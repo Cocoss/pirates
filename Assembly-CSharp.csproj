@@ -44,21 +44,22 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Fantasy AI Free Edition\Scripts\AI Scripts\Cull.cs" />
-     <Compile Include="Assets\Fantasy AI Free Edition\Scripts\AI Scripts\DistanceActive.cs" />
-     <Compile Include="Assets\Fantasy AI Free Edition\Scripts\AI Scripts\FreeAI.cs" />
-     <Compile Include="Assets\Fantasy AI Free Edition\Scripts\AI Scripts\Health.cs" />
-     <Compile Include="Assets\Fantasy AI Free Edition\Scripts\Player\AICount.cs" />
-     <Compile Include="Assets\Fantasy AI Free Edition\Scripts\Player\HealthPotion.cs" />
-     <Compile Include="Assets\Fantasy AI Free Edition\Scripts\Player\PlayerController.cs" />
+     <Compile Include="Assets\Boat\ReflectionRenderTexture.cs" />
+     <Compile Include="Assets\Floater.cs" />
+     <Compile Include="Assets\Ocean Sources\Boyancy.cs" />
+     <Compile Include="Assets\Ocean Sources\FPSCounter.cs" />
+     <Compile Include="Assets\Ocean Sources\MistController.cs" />
+     <Compile Include="Assets\Ocean Sources\Wind.cs" />
      <None Include="Assets\readme.txt" />
      <None Include="Assets\Standard Assets\Shaders\DifBumpSpecTransp.shader" />
      <None Include="Assets\CustomizableSword_Free\readme.txt" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
+     <None Include="Assets\Pro Standard Assets\Water\Sources\FX-Water Reflected.shader" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\FX-SimpleWater4.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
+     <None Include="Assets\Ocean Sources\Ocean.shader" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
-     <None Include="Assets\Fantasy AI Free Edition\README.txt" />
+     <None Include="Assets\SurfaceEffects\Spume\WaterSpume.shader" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Sources\Shaders\FX-Water.shader" />
      <None Include="Assets\SkeletonData\animations.txt" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\WaterInclude.cginc" />

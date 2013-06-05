@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{CBB038D7-4DB4-FD0E-22AC-501524F92158}") = "pirates", "Assembly-CSharp-firstpass.csproj", "{1414C941-8390-50FF-05F8-CAA5ED997704}"
 EndProject
+Project("{CBB038D7-4DB4-FD0E-22AC-501524F92158}") = "pirates", "Assembly-CSharp.csproj", "{7E2BE0AC-1914-3BE1-1C59-324ABD39E731}"
+EndProject
 Project("{CBB038D7-4DB4-FD0E-22AC-501524F92158}") = "pirates", "Assembly-CSharp-Editor.csproj", "{415A28B5-6687-F045-374B-0355BAB83F44}"
 EndProject
 Project("{CBB038D7-4DB4-FD0E-22AC-501524F92158}") = "pirates", "Assembly-UnityScript-firstpass.unityproj", "{A338C043-616E-BB61-E3D9-3EC05C29DD39}"
@@ -19,6 +21,10 @@ Global
 		{1414C941-8390-50FF-05F8-CAA5ED997704}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1414C941-8390-50FF-05F8-CAA5ED997704}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1414C941-8390-50FF-05F8-CAA5ED997704}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E2BE0AC-1914-3BE1-1C59-324ABD39E731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E2BE0AC-1914-3BE1-1C59-324ABD39E731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E2BE0AC-1914-3BE1-1C59-324ABD39E731}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E2BE0AC-1914-3BE1-1C59-324ABD39E731}.Release|Any CPU.Build.0 = Release|Any CPU
 		{415A28B5-6687-F045-374B-0355BAB83F44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{415A28B5-6687-F045-374B-0355BAB83F44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{415A28B5-6687-F045-374B-0355BAB83F44}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,7 +41,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																								GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																								GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

@@ -44,27 +44,38 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Plugins\destroyThisTimed.js" />
      <Compile Include="Assets\Standard Assets\Bras et armes\Anime_arme.js" />
      <Compile Include="Assets\Standard Assets\Bras et armes\Tir_magnum.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Barres.js" />
+     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Bateau.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Carac.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Combat.js" />
+     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Conduite.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Crosshair.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\FPSInputController.js" />
+     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\FloatableWater.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\IA.js" />
+     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Interobjet.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Inventory.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Loot.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\PlatformInputController.js" />
+     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\SmoothFollow.js" />
+     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Vehicules.js" />
+     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\jsfloater_166.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\lois_physiques.js" />
      <Compile Include="Assets\Standard Assets\Particles\Legacy Particles\TimedObjectDestructor.js" />
      <None Include="Assets\readme.txt" />
      <None Include="Assets\Standard Assets\Shaders\DifBumpSpecTransp.shader" />
      <None Include="Assets\CustomizableSword_Free\readme.txt" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
+     <None Include="Assets\Pro Standard Assets\Water\Sources\FX-Water Reflected.shader" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\FX-SimpleWater4.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
+     <None Include="Assets\Ocean Sources\Ocean.shader" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
+     <None Include="Assets\SurfaceEffects\Spume\WaterSpume.shader" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Sources\Shaders\FX-Water.shader" />
      <None Include="Assets\SkeletonData\animations.txt" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\WaterInclude.cginc" />

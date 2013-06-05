@@ -44,7 +44,17 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Plugins\CameraHelper.cs" />
+     <Compile Include="Assets\Plugins\Exocortex_FFT\Complex.cs" />
+     <Compile Include="Assets\Plugins\Exocortex_FFT\ComplexArray.cs" />
+     <Compile Include="Assets\Plugins\Exocortex_FFT\ComplexF.cs" />
+     <Compile Include="Assets\Plugins\Exocortex_FFT\ComplexMath.cs" />
+     <Compile Include="Assets\Plugins\Exocortex_FFT\ComplexStats.cs" />
+     <Compile Include="Assets\Plugins\Exocortex_FFT\Fourier.cs" />
+     <Compile Include="Assets\Plugins\Exocortex_FFT\FourierDirection.cs" />
+     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Buoyancy.cs" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
+     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Ocean.cs" />
      <Compile Include="Assets\Standard Assets\Water (Basic)\Sources\Scripts\WaterSimple.cs" />
      <Compile Include="Assets\Standard Assets\Water (Pro Only)\Sources\Scripts\Water.cs" />
      <Compile Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Scripts\Displace.cs" />
@@ -58,9 +68,12 @@
      <None Include="Assets\Standard Assets\Shaders\DifBumpSpecTransp.shader" />
      <None Include="Assets\CustomizableSword_Free\readme.txt" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
+     <None Include="Assets\Pro Standard Assets\Water\Sources\FX-Water Reflected.shader" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\FX-SimpleWater4.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
+     <None Include="Assets\Ocean Sources\Ocean.shader" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
+     <None Include="Assets\SurfaceEffects\Spume\WaterSpume.shader" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Sources\Shaders\FX-Water.shader" />
      <None Include="Assets\SkeletonData\animations.txt" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\WaterInclude.cginc" />
