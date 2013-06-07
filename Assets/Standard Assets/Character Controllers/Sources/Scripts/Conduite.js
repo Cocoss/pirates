@@ -1,9 +1,8 @@
 var ispilot: boolean = false;
 
-//Mass
-var mass = 3000;
+
 //Force of the boats engine
-var engineForce = 10000.0;
+var engineForce = .01;
 //Rudder torque coefficient for steering the boat
 var rudder = 40;
 //How far the direction of the propeller force is deflected by the rudder
@@ -16,15 +15,14 @@ var angularDrag = 0.8;
 var cogY = -0.5;
 //max width, height and length of the boat (used for water dynamics)
 var size = Vector3(3,3,10);
-//volume of boat in liters (the higher the volume, the higher the boat will floar)
-var volume = 9000;
 
 //particle system used for foam from the boat's propeller
 var engineSpume : Transform;
 
-private var queryUserInput = true;
 private var rpmPitch = 0.0;
 private var waterSurface = null;
+
+var player: GameObject;
 
 function Start()
 { 
@@ -38,15 +36,6 @@ function Start()
 //controlling the boat if required
 //===================================================================
 
-//return a status string for the vehicle
-function GetStatus(status : GUIText) {
-	status.text="v="+(rigidbody.velocity.magnitude * 3.6).ToString("f1") + " km/h";
-}
-
-//return an information string for the vehicle
-function GetControlString(info : GUIText) {
-	info.text="Use arrow keys to control the boat.";
-}
 
 //Setup main camera to follow boat
 function SetupCamera() {
@@ -60,11 +49,6 @@ function SetupCamera() {
 	Camera.main.transform.parent=null;
 }
 
-//Enable or disable user controls
-function SetEnableUserInput(enableInput)
-{
-	queryUserInput=enableInput;
-}
 
 //Boat physics
 //======================================================================
@@ -73,20 +57,21 @@ function FixedUpdate () {
 	
 	//if there is no water surface we are colliding with, no boat physics	
 	if(waterSurface==null) {
-		return;}
+	
 
 	//query input axes if necessarry
 	motor = 0.0;
 	steer = 0.0;
+	}
 	
-	if (ispilot == true) {
-	if(queryUserInput)
+	if(ispilot == true)
 	{
 		motor = Input.GetAxis("Vertical");
 		steer = Input.GetAxis("Horizontal");
 	}
 	
-	if (Input.GetKeyUp(KeyCode.F)) {
+	if (Input.GetKeyUp(KeyCode.F) && ispilot ==true) {
+				print("appuye sur F");
 				player = GameObject.Find("FPS joueur");
 				player.GetComponent("MouseLook").enabled = true;
  				player.GetComponent(FPSInputController).enabled = true;
@@ -97,13 +82,13 @@ function FixedUpdate () {
    				gameObject.GetComponentInChildren(Camera).enabled = false;
    				ispilot = false;
 	}
-	}
+	
 
 	//get water level and percent under water
-	waterLevel=waterSurface.collider.bounds.max.y;
+	waterLevel=0;
 	distanceFromWaterLevel = transform.position.y-waterLevel;
 	percentUnderWater = Mathf.Clamp01((-distanceFromWaterLevel + 0.5*size.y)/size.y);
-
+	
 	
 	//Engine
 	//--------------------------------------------------------------
@@ -123,58 +108,24 @@ function FixedUpdate () {
 		//apply propeller force
 		rigidbody.AddForceAtPosition(propellerDir * engineForce * motor , propellerPosGlobal);
 		
-	
+		print(propellerDir);
+		print(propellerPosGlobal);
+		
+		dragDirection = transform.InverseTransformDirection(rigidbody.velocity);
+		dragForces = -Vector3.Scale(dragDirection,drag);
+		print("Dragdirection"+dragDirection);
+	    rigidbody.AddForce(transform.TransformDirection(dragForces)*0.5);
+	    
+	    depth = Mathf.Abs(transform.forward.y)*size.z*0.1+Mathf.Abs(transform.up.y)*size.y*0.1;
+	    dragAttackPosition = Vector3(transform.position.x,waterLevel-depth,transform.position.z);
+	    print("dragAttackPosition"+dragAttackPosition);
+	//rigidbody.AddForceAtPosition(transform.TransformDirection(dragForces)*rigidbody.velocity.magnitude*(1+percentUnderWater*7),dragAttackPosition);
+	    
+	    forwardVelo = Vector3.Dot(rigidbody.velocity,transform.forward);
+	rigidbody.AddTorque(transform.up*forwardVelo*forwardVelo*rudder*steer*0.01);	
 	}
 	
-	//Drag
-	//--------------------------------------------------------------
-	
-	//calculate drag force
-	dragDirection = transform.InverseTransformDirection(rigidbody.velocity);
-	dragForces = -Vector3.Scale(dragDirection,drag);
-	
-	//depth of the boat under water (used to find attack point for drag force)
-	depth = Mathf.Abs(transform.forward.y)*size.z*0.5+Mathf.Abs(transform.up.y)*size.y*0.5;
-	
-	//apply force
-	dragAttackPosition = Vector3(transform.position.x,waterLevel-depth,transform.position.z);
-	rigidbody.AddForceAtPosition(transform.TransformDirection(dragForces)*rigidbody.velocity.magnitude*(1+percentUnderWater*(waterSurface.waterDragFactor-1)),dragAttackPosition);
-	
-	//linear drag (linear to velocity, for low speed movement)
-	rigidbody.AddForce(transform.TransformDirection(dragForces)*500);
-	
-	//rudder torque for steering (square to velocity)
-	forwardVelo = Vector3.Dot(rigidbody.velocity,transform.forward);
-	rigidbody.AddTorque(transform.up*forwardVelo*forwardVelo*rudder*steer);	
-	
-	//Sound
-	//--------------------------------------------------------------
-	
-	audio.volume=0.3+Mathf.Abs(motor);
 
-	//slowly adjust pitch to power input
-	rpmPitch=Mathf.Lerp(rpmPitch,Mathf.Abs(motor),Time.deltaTime*0.4);
-	audio.pitch=0.3+0.7*rpmPitch;
+	
 
-	//reset water surface, so we have to stay in contact for boat physics.
-	waterSurface = null;
 }
-
-function OnTriggerStay(coll)
-{
-	if(coll.GetComponent(FloatableWater)!=null)
-		waterSurface=coll.GetComponent(FloatableWater);
-}
-
-//Called by DamageReceiver if boat destroyed
-function Detonate()
-{
-	//no more boat force => sink
-	enabled=false;
-	
-	//Mark object no longer a target for homing missiles.
-	if(tag=="MissileTarget")
-		tag="";
-}
-
-@script RequireComponent (AudioSource)

@@ -88,7 +88,7 @@ public class Boyancy : MonoBehaviour
 			
 			float buyancy = mag * (wpos.y);
 			if (ocean.enabled && !sink)
-				buyancy = mag * (wpos.y - ocean.GetWaterHeightAtLocation (wpos.x, wpos.z));
+				buyancy = mag * (2*wpos.y - ocean.GetWaterHeightAtLocation (wpos.x, wpos.z));
 			
 			if (sink)
 			{

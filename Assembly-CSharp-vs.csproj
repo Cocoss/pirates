@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Boat\ReflectionRenderTexture.cs" />
+     <Compile Include="Assets\Depth Mask Example\Scripts\Animation\BobbingBoat.cs" />
+     <Compile Include="Assets\Depth Mask Example\Scripts\SetRenderQueue.cs" />
      <Compile Include="Assets\Floater.cs" />
      <Compile Include="Assets\Ocean Sources\Boyancy.cs" />
      <Compile Include="Assets\Ocean Sources\FPSCounter.cs" />
@@ -57,6 +59,7 @@
      <None Include="Assets\Pro Standard Assets\Water\Sources\FX-Water Reflected.shader" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\FX-SimpleWater4.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
+     <None Include="Assets\Depth Mask Example\Shaders\DepthMask.shader" />
      <None Include="Assets\Ocean Sources\Ocean.shader" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
      <None Include="Assets\SurfaceEffects\Spume\WaterSpume.shader" />
