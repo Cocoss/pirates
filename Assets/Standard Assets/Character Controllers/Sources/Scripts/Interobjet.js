@@ -29,7 +29,8 @@ var siege: GameObject;
 				if (Input.GetKeyUp(KeyCode.F)) {
 				//siege = enface.GetComponentInChildren(Siege)
 				localisation=enface.transform.position;
-				localisation.y= localisation.y + 2;
+				localisation.y= localisation.y + 1;
+				localisation.z= localisation.z - 1;
 				//localisation.z= localisation.z - 1.75;
 				bateau_roation=enface.transform.rotation;
 				player = GameObject.Find("FPS joueur");
@@ -45,7 +46,7 @@ var siege: GameObject;
    		       //player.active =false;
    		      //gameObject.Find("Graphics").SetActiveRecursively(true);
 				enface.GetComponentInChildren(Camera).enabled=true;
-				 enface.GetComponent(Conduite).ispilot = true;
+				enface.SendMessage("conduire",1);
 				
 				}
 				

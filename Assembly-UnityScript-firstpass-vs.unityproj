@@ -53,6 +53,7 @@
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Combat.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Conduite.js" />
+     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Control_bateau.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Crosshair.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\FPSInputController.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\FloatableWater.js" />

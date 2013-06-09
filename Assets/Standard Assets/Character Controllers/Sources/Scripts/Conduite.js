@@ -1,18 +1,27 @@
+
+
+//Est-ce que le bateau est occupé ?
 var ispilot: boolean = false;
 
 
-//Force of the boats engine
+//Force du moteur (devra être remplacé par une voile)
 var engineForce = .01;
+
 //Rudder torque coefficient for steering the boat
-var rudder = 40;
+var rudder = 15;
+
 //How far the direction of the propeller force is deflected by the rudder
 var propellerTurningAngle = 20;
+
 //drag coefficients along x,y and z directions
 var drag = Vector3(6.0,4.0,0.2);
+
 //angular drag coefficient
 var angularDrag = 0.8;
-//heigh of center of gravity
+
+//Hauteur du centre de gravité
 var cogY = -0.5;
+
 //max width, height and length of the boat (used for water dynamics)
 var size = Vector3(3,3,10);
 
@@ -32,12 +41,11 @@ function Start()
 		Debug.Log("The Boat needs a collider to float on the water!");
 }
 
-//Functions to be used by external scripts 
-//controlling the boat if required
-//===================================================================
 
 
-//Setup main camera to follow boat
+
+//Setup de la caméra qui suit le bateau
+
 function SetupCamera() {
 	if(Camera.main.GetComponent(SmoothFollow) != null)
 	{
@@ -70,6 +78,7 @@ function FixedUpdate () {
 		steer = Input.GetAxis("Horizontal");
 	}
 	
+	//pouvoir sortir du mode "On Ride"
 	if (Input.GetKeyUp(KeyCode.F) && ispilot ==true) {
 				print("appuye sur F");
 				player = GameObject.Find("FPS joueur");
@@ -84,45 +93,59 @@ function FixedUpdate () {
 	}
 	
 
-	//get water level and percent under water
+	//Niveau de l'eau y=0 et calcul du pourcentage en dessous de l'eau
 	waterLevel=0;
-	distanceFromWaterLevel = transform.position.y-waterLevel;
+	distanceFromWaterLevel = transform.position.y-waterLevel*lois_physiques.deltatemps;
 	percentUnderWater = Mathf.Clamp01((-distanceFromWaterLevel + 0.5*size.y)/size.y);
 	
 	
-	//Engine
-	//--------------------------------------------------------------
+	//Moteur--------------------------------------------------------------
 	
-	//calculate propeller position
+	//position du "populseur"
 	propellerPos = Vector3(0,-size.y*0.5,-size.z*0.5);
 	propellerPosGlobal=transform.TransformPoint(propellerPos);
 	
 
 	if(ispilot == true)
 	{
-		//direction propeller force is pointing to.
+		
+		//Force motrice------------------------------------------------------
+				
+		//Direction de la force motrice du bateau
 		//mostly forward, rotated a bit according to steering angle
 		steeringAngle = steer * propellerTurningAngle * Mathf.Deg2Rad;
-		propellerDir = transform.forward*Mathf.Cos(steeringAngle) - transform.right*Mathf.Sin(steeringAngle);
+		propellerDir = transform.forward*Mathf.Cos(steeringAngle) - transform.right*Mathf.Sin(steeringAngle)*lois_physiques.deltatemps;
 		
-		//apply propeller force
-		rigidbody.AddForceAtPosition(propellerDir * engineForce * motor , propellerPosGlobal);
+		//On applique la force de propulsion
+	
+		rigidbody.AddForceAtPosition(propellerDir * engineForce * motor *lois_physiques.deltatemps, propellerPosGlobal);
 		
-		print(propellerDir);
-		print(propellerPosGlobal);
+		//print(propellerDir);
+	    //print(propellerPosGlobal);
 		
+		
+		//Frottements--------------------------------------------------------
+		
+		//Direction des fottements et force engendrée
 		dragDirection = transform.InverseTransformDirection(rigidbody.velocity);
 		dragForces = -Vector3.Scale(dragDirection,drag);
-		print("Dragdirection"+dragDirection);
+		//print("Dragdirection"+dragDirection);
+		
+		//On applique la force de frottement longitudinal
 	    rigidbody.AddForce(transform.TransformDirection(dragForces)*0.5);
 	    
+	    //profondeur sous l'eau
 	    depth = Mathf.Abs(transform.forward.y)*size.z*0.1+Mathf.Abs(transform.up.y)*size.y*0.1;
+	    
+	    //postion d'attaque des frottements
 	    dragAttackPosition = Vector3(transform.position.x,waterLevel-depth,transform.position.z);
 	    print("dragAttackPosition"+dragAttackPosition);
-	//rigidbody.AddForceAtPosition(transform.TransformDirection(dragForces)*rigidbody.velocity.magnitude*(1+percentUnderWater*7),dragAttackPosition);
+	    print(rigidbody.velocity.magnitude);
+		rigidbody.AddForceAtPosition(transform.TransformDirection(dragForces)*rigidbody.velocity.magnitude*0.5*(1+percentUnderWater),dragAttackPosition);
 	    
 	    forwardVelo = Vector3.Dot(rigidbody.velocity,transform.forward);
-	rigidbody.AddTorque(transform.up*forwardVelo*forwardVelo*rudder*steer*0.01);	
+	   // print(forwardVelo);
+		rigidbody.AddTorque(transform.up*forwardVelo*forwardVelo*rudder*steer*0.1);	
 	}
 	
 
