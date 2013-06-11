@@ -1,5 +1,5 @@
 #pragma strict
- 
+ Time.timeScale = 1;
  var exitbutton = false;
  var texte;
  texte = GetComponentInChildren(MeshRenderer);

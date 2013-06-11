@@ -55,5 +55,5 @@ function LateUpdate () {
 	transform.position.y = currentHeight;
 	
 	// Always look at the target
-	transform.LookAt (target);
+	//transform.LookAt (target);
 }

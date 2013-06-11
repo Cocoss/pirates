@@ -13,7 +13,7 @@ public class Buoyancy : MonoBehaviour
 {
 //	public Ocean ocean;
 
-	public float density = 500;
+	float density = 500;
 	public int slicesPerAxis = 2;
 	public bool isConcave = false;
 	public int voxelsLimit = 16;

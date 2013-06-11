@@ -42,7 +42,7 @@ carac_vitesse = vitesse + bonus_speed;
 
 }
 
-function XP (){
+function XP(){
 
 experience = experience +10;
 }

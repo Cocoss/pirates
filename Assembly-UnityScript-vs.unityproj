@@ -46,10 +46,6 @@
   <ItemGroup>
      <Compile Include="Assets\Boat\WaterSpume.js" />
      <Compile Include="Assets\CustomizableSword_Free\Scripts\CharacterViewerRotate.js" />
-     <Compile Include="Assets\Scriptsmaison\Life.js" />
-     <Compile Include="Assets\Scriptsmaison\Pause.js" />
-     <Compile Include="Assets\Scriptsmaison\Pause_Menu.js" />
-     <Compile Include="Assets\Scriptsmaison\Play.js" />
      <Compile Include="Assets\Scriptsmaison\VehicleController.js" />
      <Compile Include="Assets\Weapons\Scripts\DamageReceiver.js" />
      <Compile Include="Assets\Weapons\Scripts\MachineGun.js" />

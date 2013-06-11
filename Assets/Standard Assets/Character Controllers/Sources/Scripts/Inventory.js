@@ -1,5 +1,10 @@
 #pragma strict
 
+private var GridValue : float = -1;
+var GridPosition : Vector2 = new Vector2(10,2);
+var GridSize : Vector2 = new Vector2(323,410);
+var Grids : Texture[];
+
 //interface variables
 var invHeight:float=500;
 var invWidth:float=800;
@@ -38,6 +43,9 @@ var tirf:float;
 
 function Update() {
 
+    var AddingNewItem : Loot = GetComponent(Loot);
+    AddingNewItem.newItem();
+    
 //Recuperation des variables dans Carac et Loot
 var recupc = GetComponent(Carac);
 var recuploot = GetComponent(Loot);
@@ -73,17 +81,20 @@ if (bonus_vitesse > 0) {bv = " + "+bonus_vitesse;} else {bv = null;}
 function OnGUI () {
 
 GUI.skin= customSkin;
-GUILayout.BeginArea(Rect(Screen.width/2-invWidth/2,Screen.height/2-invHeight/2,invHeight,invWidth),customStyle);
+GUILayout.BeginArea(Rect(Screen.width/2-230,Screen.height/2-invHeight/2,invHeight,invWidth),customStyle);
 GUILayout.Space(50);
 GUILayout.Label(titleTexture);
 GUILayout.Space(buttonSpacing);
-GUI.TextField(Rect(10,10,150,25),nom);
-GUI.TextArea(Rect(10,35,150,400),"Caractéristiques : \n\nNiveau : "+niv+"\nGrade : "+grad
+GUI.TextField(Rect(0,0,160,25),nom);
+GUI.Box(Rect(0,25,160,400),"Caractéristiques : \n\nNiveau : "+niv+"\nGrade : "+grad
 +"\nSanté : "+life+"/"+Maxsante+"\nEndurance : "+endurence+"/"+Maxendurence+"\nMagie : "+magie+"/"+Maxmagie
 +"\nForce : "+strength+"\nDéfense : "+defense+"\nVitesse : "+vitesse+bv+"\nRécupération : "+recup
 +"\nAthléthisme : "+carac_endu+"\nTir à l'arc : "+tira+"\nArmes à feu : "+tirf
 
-,200);
+);
 
    GUILayout.EndArea();
-   }
+   GUI.Box(Rect((Screen.width/2-230)+160,Screen.height/2-invHeight/2,400,425),"Inventaire");
+  GridValue = GUI.SelectionGrid(Rect((Screen.width/2-230)+160,Screen.height/2-invHeight/2+40,400,320), GridValue, Grids, 5);
+    }
+    

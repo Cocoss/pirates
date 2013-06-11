@@ -47,12 +47,12 @@ function Start()
 //Setup de la caméra qui suit le bateau
 
 function SetupCamera() {
-	if(Camera.main.GetComponent(SmoothFollow) != null)
+	if(Camera.main.GetComponent(Vue_bateau) != null)
 	{
-		Camera.main.GetComponent(SmoothFollow).enabled=true;
-		Camera.main.GetComponent(SmoothFollow).target=transform;
-		Camera.main.GetComponent(SmoothFollow).distance=11;
-		Camera.main.GetComponent(SmoothFollow).height=3;
+		Camera.main.GetComponent(Vue_bateau).enabled=true;
+		Camera.main.GetComponent(Vue_bateau).target=transform;
+		Camera.main.GetComponent(Vue_bateau).distance=27;
+		Camera.main.GetComponent(Vue_bateau).height=12;
 	}
 	Camera.main.transform.parent=null;
 }
@@ -81,14 +81,16 @@ function FixedUpdate () {
 	//pouvoir sortir du mode "On Ride"
 	if (Input.GetKeyUp(KeyCode.F) && ispilot ==true) {
 				print("appuye sur F");
-				player = GameObject.Find("FPS joueur");
+				player = GameObject.Find("FPSjoueur");
 				player.GetComponent("MouseLook").enabled = true;
  				player.GetComponent(FPSInputController).enabled = true;
-   				player.GetComponent(CharacterController).enabled = true;
-   				player.GetComponent(CharacterMotor).enabled = true;
    				player.GetComponentInChildren(Camera).enabled = true;
    				player.GetComponent(Transform).transform.position =  player.GetComponent(Transform).transform.position;
    				gameObject.GetComponentInChildren(Camera).enabled = false;
+   				 //réticule
+   			   	player.GetComponentInChildren(Crosshair).enabled=true;
+   			   	//tir
+   			   	player.GetComponentInChildren(Tir_magnum).enabled=true;
    				ispilot = false;
 	}
 	
@@ -139,13 +141,13 @@ function FixedUpdate () {
 	    
 	    //postion d'attaque des frottements
 	    dragAttackPosition = Vector3(transform.position.x,waterLevel-depth,transform.position.z);
-	    print("dragAttackPosition"+dragAttackPosition);
-	    print(rigidbody.velocity.magnitude);
-		rigidbody.AddForceAtPosition(transform.TransformDirection(dragForces)*rigidbody.velocity.magnitude*0.5*(1+percentUnderWater),dragAttackPosition);
+	    //print("dragAttackPosition"+dragAttackPosition);
+	   // print(rigidbody.velocity.magnitude);
+		rigidbody.AddForceAtPosition(transform.TransformDirection(dragForces)*rigidbody.velocity.magnitude*0.01,dragAttackPosition);
 	    
 	    forwardVelo = Vector3.Dot(rigidbody.velocity,transform.forward);
 	   // print(forwardVelo);
-		rigidbody.AddTorque(transform.up*forwardVelo*forwardVelo*rudder*steer*0.1);	
+		rigidbody.AddTorque(transform.up*forwardVelo*forwardVelo*rudder*steer*0.05);	
 	}
 	
 

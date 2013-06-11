@@ -1,16 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Character Controllers\Sources\Scripts\Conduite.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Character Controllers\Sources\Scripts\Interobjet.js">
     <Files>
-      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\Conduite.js" Line="144" Column="3" />
-      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\Interobjet.js" Line="33" Column="40" />
-      <File FileName="Assets\Ocean Sources\Boyancy.cs" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\IA.js" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\Bateau.js" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\PNJ.js" Line="4" Column="25" />
+      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\Pause.js" Line="33" Column="2" />
+      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\Interobjet.js" Line="20" Column="20" />
+      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\Crafting.js" Line="64" Column="41" />
       <File FileName="Assets\Standard Assets\Bras et armes\Tir_magnum.js" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\FloatableWater.js" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\Ocean.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\Besace.js" Line="20" Column="23" />
+      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\Inventory.js" Line="48" Column="5" />
+      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\Loot.js" Line="200" Column="41" />
+      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\Play.js" Line="2" Column="21" />
+      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\Crosshair.js" Line="14" Column="36" />
+      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\Interface dialogues.js" Line="78" Column="37" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

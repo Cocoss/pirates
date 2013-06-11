@@ -70,7 +70,7 @@ function Update () {
 	controller.Move(moveDirect);
 	
 							  } else {moveDirect.y -= lois_physiques.gravite * lois_physiques.deltatemps;
- controller.Move(moveDirect); print("pas grounded ! ");}
+ controller.Move(moveDirect); }
     
 			} else 	{
 
@@ -80,7 +80,7 @@ function Update () {
    				 state.speed = 1;
    				    animation["die"].wrapMode = WrapMode.Once;
    				    animation.Play("die");
-   				   murderer = GameObject.Find("FPS joueur");
+   				   murderer = GameObject.Find("FPSjoueur");
    				   
    				    isdead = 1;
 murderer.SendMessage("XP");

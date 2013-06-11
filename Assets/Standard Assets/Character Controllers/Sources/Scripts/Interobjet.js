@@ -10,68 +10,75 @@ var enface: GameObject;
 var player: GameObject;
 var siege: GameObject;
 
-	//Si objet à moins de 5 mètres
+	//Si objet est visé à moins de 5 mètres
 	if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), quelquechose, 5))
 		{
 		
 		if(quelquechose.collider != null)
 			{ 
-			enface = quelquechose.collider.gameObject;
+			enface = quelquechose.collider.gameObject; //On stocke le gameObject visé
+			if (quelquechose.collider.tag == "PNJ") {
 			
-			if (quelquechose.collider.tag == "Terrain") {SendMessageUpwards("pointeur",0);} else {
+			SendMessageUpwards("pointeur",2);} else {
 			
+			//Si l'objet est la commande d'un bateau
 			if (quelquechose.collider.tag == "bateau"){
 			
-			
-				print("Bateau ! ");
+			//Le réticule se change en barre de gouvernail
+				
 				SendMessageUpwards("pointeur",1);
 				
+			//Si on appuye sur F on entre dans le bateau
+				
 				if (Input.GetKeyUp(KeyCode.F)) {
-				//siege = enface.GetComponentInChildren(Siege)
+				
+				//On prend la localisation de la commande de pilotage
+				
 				localisation=enface.transform.position;
-				localisation.y= localisation.y + 1;
-				localisation.z= localisation.z - 1;
-				//localisation.z= localisation.z - 1.75;
+			    localisation.y= localisation.y + 1;
+				localisation.z = localisation.z - 1;
 				bateau_roation=enface.transform.rotation;
-				player = GameObject.Find("FPS joueur");
-				player.GetComponent(Inventory).enabled = false;
-  				player.GetComponent("MouseLook").enabled = false;
- 				player.GetComponent(FPSInputController).enabled = false;
-   				player.GetComponent(CharacterController).enabled = true;
-   				player.GetComponent(CharacterMotor).enabled = true;
+				
+				//On cherche le joueur et on désactive ses fonctions
+				
+				player = GameObject.Find("FPSjoueur");
+				//souris
+				player.GetComponent("MouseLook").enabled = false; 
+				//controle du joueur
+ 				player.GetComponent(FPSInputController).enabled = false; 
+ 				//caméra
    			    player.GetComponentInChildren(Camera).enabled = false;
-   			   
-   			   player.GetComponent(Transform).transform.position = localisation;
+   			    //réticule
+   			   	player.GetComponentInChildren(Crosshair).enabled=false;
+   			   	//tir
+   			   	player.GetComponentInChildren(Tir_magnum).enabled=false;
+   			   	player.GetComponent(Rigidbody).velocity=Vector3.zero;
+   			   	
+   			   	//On place le personnage par rapport à la Barre
+   			    player.GetComponent(Transform).transform.localPosition = localisation;
    		        player.GetComponent(Transform).transform.rotation = bateau_roation;
-   		       //player.active =false;
-   		      //gameObject.Find("Graphics").SetActiveRecursively(true);
+   		 
+   		 	//On active la caméra du bateau
 				enface.GetComponentInChildren(Camera).enabled=true;
+			//On informe le bateau qu'il est sous notre controle
 				enface.SendMessage("conduire",1);
 				
-				}
+				} 
 				
-				
-				
-				
-				
-				} else {SendMessageUpwards("pointeur",0);
-				
-				if (quelquechose.collider == null){
-				print("ciel");
-				
-				SendMessageUpwards("pointeur",0);}}
 			
+				} 
+				 //Sinon on remet le pointeur d'origine 
+				else {SendMessageUpwards("pointeur",0);}
+				
+						
 			
-			}
+			}}else {SendMessageUpwards("pointeur",0);}
 			
 			
 
 	
-}
+}}
 
-
- 
-} else {SendMessageUpwards("pointeur",0);}}
 
 
 
